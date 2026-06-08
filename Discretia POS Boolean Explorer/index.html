@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discretia: POS Boolean Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="petals-container"></div>
+
+    <div id="app-container">
+        <nav>
+            <h1>🌸 Discretia</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#materi">Materi</a></li>
+                <li><a href="#kalkulator">Kalkulator</a></li>
+                <li><a href="#pembuktian">Pembuktian</a></li>
+                <li><a href="#latihan">Latihan</a></li>
+            </ul>
+        </nav>
+
+        <section id="home">
+            <div class="hero-text reveal active">
+                <h1>Discretia</h1>
+                <p>Eksplorasi cantiknya Aljabar Boolean, khusus untuk sub-materi <b>Product-of-Sum (POS)</b> dengan gaya yang elegan dan interaktif.</p>
+                <a href="#materi" class="btn">Mulai Eksplorasi 💖</a>
+            </div>
+        </section>
+
+        <section id="materi">
+            <h2 class="section-title">Apa itu POS?</h2>
+            <div class="card reveal">
+                <h3 class="materi-title">Product-of-Sum (Perkalian dari Penjumlahan)</h3>
+                <p class="materi-desc">
+                    Bentuk kanonik POS berfokus pada hasil fungsi yang bernilai <b>0 (salah)</b> pada tabel kebenaran. Setiap baris yang menghasilkan 0 akan membentuk sebuah suku yang disebut <b>Maxterm (M)</b>.
+                </p>
+                <div class="aturan-box">
+                    <b>Aturan Maxterm:</b><br>
+                    Jika variabel bernilai <b>0</b> ➡️ Tulis literal asli (contoh: <i>x</i>)<br>
+                    Jika variabel bernilai <b>1</b> ➡️ Tulis literal komplemen (contoh: <i>x'</i>)<br>
+                    <i>Contoh: Jika baris x=0, y=1, z=0 menghasilkan f=0, maka Maxterm-nya adalah (x + y' + z).</i>
+                </div>
+            </div>
+        </section>
+
+        <section id="kalkulator">
+            <h2 class="section-title">Kalkulator Ajaib POS</h2>
+            <div class="card reveal">
+                <p class="calc-desc">Klik tombol nilai <b>f(x,y,z)</b> untuk mengubahnya menjadi <b>0</b>. Fungsi POS akan tercipta otomatis! ✨</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>x</th><th>y</th><th>z</th><th>Maxterm (M)</th><th>f(x,y,z)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truth-table-body">
+                        </tbody>
+                </table>
+                <div class="result-box" id="pos-result">
+                    <span class="placeholder-text">f(x,y,z) = 1 (Pilih nilai 0 pada tabel)</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="pembuktian">
+            <h2 class="section-title">Pembuktian Manual</h2>
+            <div class="card">
+                <p class="calc-desc">Misalkan kita memiliki fungsi: <b>f(x,y,z) = x(y + z)</b>. Mari kita jadikan bentuk Kanonik POS secara manual langkah demi langkah. Gulir perlahan!</p>
+                
+                <div class="step-box reveal">
+                    <b>Langkah 1:</b> Identifikasi kekurangan variabel di setiap suku.<br>
+                    Suku 1: <i>x</i> (kurang y dan z)<br>
+                    Suku 2: <i>(y + z)</i> (kurang x)
+                </div>
+                <div class="step-box reveal">
+                    <b>Langkah 2:</b> Gunakan Hukum Identitas <i>A + 0 = A</i> dan Hukum Komplemen <i>AA' = 0</i>.<br>
+                    Suku 2 menjadi: <i>(xx' + y + z)</i>
+                </div>
+                <div class="step-box reveal">
+                    <b>Langkah 3:</b> Gunakan Hukum Distributif pada suku 2.<br>
+                    <i>(x + y + z)(x' + y + z)</i>
+                </div>
+                <div class="step-box reveal">
+                    <b>Langkah 4 (Hasil Akhir):</b> Jabarkan suku pertama dengan cara yang sama.<br>
+                    Maka didapat: <br>
+                    <b class="hasil-akhir">f(x,y,z) = (x+y+z)(x+y'+z)(x+y+z')(x+y'+z')(x'+y+z)</b> 🌸
+                </div>
+            </div>
+        </section>
+
+        <section id="latihan">
+            <h2 class="section-title">Latihan Bersama</h2>
+            <div class="card reveal" id="soal-container">
+                </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

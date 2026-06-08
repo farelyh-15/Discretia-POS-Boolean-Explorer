@@ -1,0 +1,172 @@
+/* ================= VARIABLES & RESET ================= */
+:root {
+    --pink-pastel: #fbcfe8;
+    --pink-main: #f472b6;
+    --pink-dark: #db2777;
+    --purple-pastel: #f3e8ff;
+    --purple-main: #c084fc;
+    --white-card: rgba(255, 255, 255, 0.9);
+    --text-dark: #475569;
+    --bg-gradient: linear-gradient(135deg, #fff5f7 0%, #f3e8ff 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg) scale(1); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg) scale(0.5); opacity: 0; }
+}
+
+@keyframes bloom {
+    0% { transform: scale(0); opacity: 1; }
+    50% { transform: scale(1.5) rotate(45deg); opacity: 0.8; }
+    100% { transform: scale(2) rotate(90deg); opacity: 0; }
+}
+
+@keyframes typing {
+    from { width: 0; opacity: 1; }
+    to { width: 100%; opacity: 1; }
+}
+
+.petal {
+    position: fixed;
+    top: -10%;
+    z-index: 0;
+    pointer-events: none;
+    color: var(--pink-main);
+    font-size: 1.5rem;
+    animation: fall linear infinite;
+}
+
+/* ================= LAYOUT & COMPONENTS ================= */
+#app-container { position: relative; z-index: 10; }
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(244, 114, 182, 0.1);
+    z-index: 1000;
+}
+nav h1 { font-family: 'Quicksand', sans-serif; color: var(--pink-dark); font-size: 1.5rem; }
+nav ul { list-style: none; display: flex; gap: 20px; }
+nav a { text-decoration: none; color: var(--purple-main); font-weight: 600; transition: 0.3s; }
+nav a:hover { color: var(--pink-main); }
+
+/* Sections */
+section {
+    min-height: 100vh;
+    padding: 100px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h2.section-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.5rem;
+    color: var(--pink-dark);
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+h2.section-title::after {
+    content: "🌸"; position: absolute; right: -40px; top: -5px;
+}
+
+/* Cards */
+.card {
+    background: var(--white-card);
+    border: 2px solid var(--pink-pastel);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(192, 132, 252, 0.15);
+    margin-bottom: 20px;
+    position: relative;
+}
+.card::before { content: "✨"; position: absolute; top: -15px; left: -15px; font-size: 2rem; }
+
+/* Hero */
+.hero-text { text-align: center; max-width: 600px; }
+.hero-text h1 { font-family: 'Quicksand', sans-serif; font-size: 3.5rem; color: var(--pink-dark); margin-bottom: 10px; }
+.hero-text p { font-size: 1.2rem; color: var(--purple-main); margin-bottom: 30px; }
+.btn {
+    background: linear-gradient(45deg, var(--pink-main), var(--purple-main));
+    color: white; padding: 12px 30px; border-radius: 30px;
+    text-decoration: none; font-weight: bold; font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4);
+    transition: 0.3s; display: inline-block;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(192, 132, 252, 0.5); }
+
+/* Typography & Utils */
+.materi-title { color: var(--purple-main); margin-bottom: 10px; }
+.materi-desc { margin-bottom: 15px; line-height: 1.6; }
+.aturan-box { background: var(--pink-pastel); padding: 15px; border-radius: 10px; }
+.calc-desc { text-align:center; margin-bottom: 15px; }
+.hasil-akhir { color: var(--pink-main); }
+.placeholder-text { color: var(--purple-main); }
+
+/* Calculator Table */
+table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: center; }
+th { background: var(--pink-pastel); color: var(--pink-dark); padding: 15px; font-family: 'Quicksand'; border-radius: 10px 10px 0 0; }
+td { padding: 12px; border-bottom: 1px solid var(--purple-pastel); font-size: 1.1rem; }
+tr { transition: 0.3s; }
+tr.active-row { background-color: #fdf2f8; }
+
+.maxterm-label { color: var(--purple-main); font-weight: bold; }
+
+.toggle-btn {
+    background: var(--purple-pastel); color: var(--purple-main);
+    border: 2px solid var(--purple-main); border-radius: 10px;
+    padding: 5px 20px; font-size: 1.1rem; font-weight: bold;
+    cursor: pointer; transition: 0.3s; position: relative;
+}
+.toggle-btn[data-val="0"] {
+    background: var(--pink-main); color: white; border-color: var(--pink-dark);
+    box-shadow: 0 0 10px var(--pink-main);
+}
+.bloom-effect {
+    position: absolute; top: 50%; left: 50%; width: 40px; height: 40px;
+    margin-top: -20px; margin-left: -20px;
+    background: radial-gradient(circle, var(--pink-main) 0%, transparent 70%);
+    border-radius: 50%; opacity: 0; pointer-events: none;
+}
+.bloom-animate { animation: bloom 0.8s ease-out; }
+
+.result-box {
+    margin-top: 30px; padding: 20px; background: var(--purple-pastel);
+    border-left: 5px solid var(--purple-main); border-radius: 10px;
+    font-size: 1.3rem; font-weight: bold; color: var(--pink-dark);
+    min-height: 70px; display: flex; align-items: center; overflow: hidden;
+}
+.typing-text { display: inline-block; overflow: hidden; white-space: nowrap; animation: typing 0.5s steps(40, end); }
+
+/* Scroll Reveal (Pembuktian) */
+.reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.step-box { background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed var(--pink-main); }
+
+/* Accordion Latihan Soal */
+.soal-item { border-bottom: 1px solid var(--pink-pastel); padding: 15px 0; }
+.soal-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: var(--purple-main); font-weight: bold; }
+.soal-content { display: none; padding: 15px; background: #faf5ff; border-radius: 10px; margin-top: 10px; color: var(--text-dark); }
