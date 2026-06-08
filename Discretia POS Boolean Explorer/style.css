@@ -108,7 +108,7 @@ h2.section-title::after {
 /* Hero */
 .hero-text { text-align: center; max-width: 600px; }
 .hero-text h1 { font-family: 'Quicksand', sans-serif; font-size: 3.5rem; color: var(--pink-dark); margin-bottom: 10px; }
-.hero-text p { font-size: 1.2rem; color: var(--purple-main); margin-bottom: 30px; }
+.hero-text p { font-size: 1.2rem; color: var(--purple-main); margin-bottom: 30px; line-height: 1.6; }
 .btn {
     background: linear-gradient(45deg, var(--pink-main), var(--purple-main));
     color: white; padding: 12px 30px; border-radius: 30px;
@@ -127,7 +127,7 @@ h2.section-title::after {
 .placeholder-text { color: var(--purple-main); }
 
 /* Calculator Table */
-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: center; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; text-align: center; }
 th { background: var(--pink-pastel); color: var(--pink-dark); padding: 15px; font-family: 'Quicksand'; border-radius: 10px 10px 0 0; }
 td { padding: 12px; border-bottom: 1px solid var(--purple-pastel); font-size: 1.1rem; }
 tr { transition: 0.3s; }
@@ -152,6 +152,36 @@ tr.active-row { background-color: #fdf2f8; }
     border-radius: 50%; opacity: 0; pointer-events: none;
 }
 .bloom-animate { animation: bloom 0.8s ease-out; }
+
+/* Custom Input Calculator */
+.custom-input-box {
+    background: #faf5ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px dashed var(--purple-main);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.custom-input-box label { font-weight: bold; color: var(--purple-main); font-size: 1.1rem; }
+.custom-input-box input {
+    padding: 8px 15px;
+    border: 1px solid var(--purple-main);
+    border-radius: 20px;
+    outline: none;
+    font-family: inherit;
+    width: 150px;
+    text-align: center;
+}
+.btn-small {
+    background: var(--pink-main); color: white;
+    border: none; padding: 8px 20px; border-radius: 20px;
+    cursor: pointer; font-weight: bold; transition: 0.3s;
+}
+.btn-small:hover { background: var(--pink-dark); transform: scale(1.05); }
 
 .result-box {
     margin-top: 30px; padding: 20px; background: var(--purple-pastel);
