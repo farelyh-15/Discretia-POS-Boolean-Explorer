@@ -96,6 +96,43 @@ function updateFormula() {
     }
 }
 
+// Fungsi untuk menerapkan soal custom dari user (Fitur Baru)
+function applyCustomMaxterms() {
+    const inputVal = document.getElementById('custom-maxterms').value;
+    
+    // Ambil angka dari input, pisahkan dengan koma, dan filter hanya angka valid (0-7)
+    const maxterms = inputVal.split(',')
+                             .map(n => parseInt(n.trim()))
+                             .filter(n => !isNaN(n) && n >= 0 && n <= 7);
+    
+    // Reset semua nilai tabel ke 1 (Default)
+    outputs = [1, 1, 1, 1, 1, 1, 1, 1];
+    
+    // Ubah nilai baris yang sesuai dengan input user menjadi 0
+    maxterms.forEach(m => {
+        outputs[m] = 0;
+    });
+    
+    // Perbarui tampilan tabel dan tombol secara otomatis
+    for (let i = 0; i < 8; i++) {
+        const btn = document.querySelector(`#row-${i} .toggle-btn`);
+        const row = document.getElementById(`row-${i}`);
+        
+        btn.setAttribute('data-val', outputs[i]);
+        
+        if (outputs[i] === 0) {
+            row.classList.add('active-row');
+            btn.innerHTML = `0 <div class="bloom-effect bloom-animate"></div>`;
+        } else {
+            row.classList.remove('active-row');
+            btn.innerHTML = `1 <div class="bloom-effect"></div>`;
+        }
+    }
+    
+    // Perbarui hasil rumus
+    updateFormula();
+}
+
 // ================= 3. ANIMASI SCROLL REVEAL =================
 function reveal() {
     const reveals = document.querySelectorAll('.reveal');
