@@ -26,7 +26,7 @@
         <section id="home">
             <div class="hero-text reveal active">
                 <h1>Discretia</h1>
-                <p>Eksplorasi cantiknya Aljabar Boolean, khusus untuk sub-materi <b>Product-of-Sum (POS)</b> dengan gaya yang elegan dan interaktif.</p>
+                <p>Platform pembelajaran interaktif yang dirancang untuk membantu Anda memahami sub-materi <b>Product-of-Sum (POS)</b> pada Aljabar Boolean melalui simulasi dan pembuktian langkah demi langkah.</p>
                 <a href="#materi" class="btn">Mulai Eksplorasi 💖</a>
             </div>
         </section>
@@ -50,7 +50,14 @@
         <section id="kalkulator">
             <h2 class="section-title">Kalkulator Ajaib POS</h2>
             <div class="card reveal">
-                <p class="calc-desc">Klik tombol nilai <b>f(x,y,z)</b> untuk mengubahnya menjadi <b>0</b>. Fungsi POS akan tercipta otomatis! ✨</p>
+                <p class="calc-desc">Klik tombol nilai <b>f(x,y,z)</b> untuk mengubahnya menjadi <b>0</b>, atau masukkan angka Maxterm Anda sendiri di bawah ini!</p>
+                
+                <div class="custom-input-box">
+                    <label for="custom-maxterms">Coba Soal Sendiri (Masukkan angka Maxterm):</label>
+                    <input type="text" id="custom-maxterms" placeholder="Contoh: 0, 2, 5">
+                    <button onclick="applyCustomMaxterms()" class="btn-small">Terapkan</button>
+                </div>
+
                 <table>
                     <thead>
                         <tr>
